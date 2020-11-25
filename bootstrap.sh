@@ -8,6 +8,7 @@ fi
 SERVER_IP=$1
 CLIENT_IP=$2
 
+apt-get update
 # Install basic software
 apt-get install -y vim nano sshpass unzip dnsutils dos2unix whois lvm2 mdadm nfs-kernel-server nfs-common
 
