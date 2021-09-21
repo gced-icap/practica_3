@@ -12,12 +12,12 @@ Vagrant.configure("2") do |config|
     server.vm.network :private_network, ip: "#{SERVER_IP}"
 
     server.vm.provider :virtualbox do |prov|
-	prov.name = "ICAP-P3 Server"
+	prov.name = "ICAP-P3-Server"
         prov.cpus = 1
         prov.memory = 1024
 
         for i in 0..3 do
-            filename = "./disks/disk#{i}.vmdk"
+            filename = "disks/disk#{i}.vmdk"
             unless File.exist?(filename)
                 prov.customize ["createmedium", "disk", "--filename", filename, "--size", 5 * 1024]
                 prov.customize ["storageattach", :id, "--storagectl", "SATA Controller", "--port", i + 1, "--device", 0, "--type", "hdd", "--medium", filename]
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
     client.vm.network :private_network, ip: "#{CLIENT_IP}"
         
     client.vm.provider :virtualbox do |prov|
-	prov.name = "ICAP-P3 Client"
+	prov.name = "ICAP-P3-Client"
         prov.cpus = 1
         prov.memory = 1024
     end
