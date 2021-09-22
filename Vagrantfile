@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.provision "shell", path: "./bootstrap.sh" do |script|
+  config.vm.provision "shell", path: "provisioning/bootstrap.sh" do |script|
       script.args = [SERVER_IP, CLIENT_IP]
   end
 
