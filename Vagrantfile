@@ -15,13 +15,14 @@ Vagrant.configure("2") do |config|
 	prov.name = "ICAP-P3-Server"
         prov.cpus = 1
         prov.memory = 1024
+	prov.linked_clone = true
 
         for i in 0..3 do
             filename = "disks/disk#{i}.vdi"
             unless File.exist?(filename)
                 prov.customize ["createmedium", "disk", "--filename", filename, "--format", "vdi", "--size", 5 * 1024]
-                prov.customize ["storageattach", :id, "--storagectl", "SATA Controller", "--port", i + 1, "--device", 0, "--type", "hdd", "--medium", filename]
             end
+            prov.customize ["storageattach", :id, "--storagectl", "SATA Controller", "--port", i + 1, "--device", 0, "--type", "hdd", "--medium", filename]
         end
     end
   end
@@ -34,6 +35,7 @@ Vagrant.configure("2") do |config|
 	prov.name = "ICAP-P3-Client"
         prov.cpus = 1
         prov.memory = 1024
+	prov.linked_clone = true
     end
   end
 
