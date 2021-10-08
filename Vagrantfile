@@ -1,3 +1,5 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
 SERVER_IP="192.168.100.10"
 CLIENT_IP="192.168.100.11"
