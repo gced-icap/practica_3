@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
 	prov.name = "ICAP-P3-Server"
         prov.cpus = 1
         prov.memory = 1024
+	prov.gui = false
 	prov.linked_clone = true
 
         for i in 0..3 do
@@ -37,6 +38,7 @@ Vagrant.configure("2") do |config|
 	prov.name = "ICAP-P3-Client"
         prov.cpus = 1
         prov.memory = 1024
+	prov.gui = false
 	prov.linked_clone = true
     end
   end
