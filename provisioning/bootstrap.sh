@@ -16,12 +16,6 @@ timedatectl set-timezone Europe/Madrid
 
 # Populate /etc/hosts
 sed -i "/server/d" /etc/hosts
-sed -i "/client/d" /etc/hosts
-    
-if ! grep -Fq $SERVER_IP /etc/hosts ; then
-        echo -e "$SERVER_IP \t server" >> /etc/hosts
-fi
-
-if ! grep -Fq $CLIENT_IP /etc/hosts ; then
-        echo -e "$CLIENT_IP \t client" >> /etc/hosts
-fi
+sed -i "/client/d" /etc/hosts    
+echo -e "$SERVER_IP \t server" >> /etc/hosts
+echo -e "$CLIENT_IP \t client" >> /etc/hosts
