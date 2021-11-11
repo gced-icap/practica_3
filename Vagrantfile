@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "server", primary: true do |server|
     server.vm.hostname = "server"
-    server.vm.network :private_network, ip: "#{SERVER_IP}"
+    server.vm.network :private_network, ip: "#{SERVER_IP}", virtualbox__intnet: true
 
     server.vm.provider :virtualbox do |prov|
 	prov.name = "ICAP-P3-Server"
@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
   
   config.vm.define "client" do |client|
     client.vm.hostname = "client"
-    client.vm.network :private_network, ip: "#{CLIENT_IP}"
+    client.vm.network :private_network, ip: "#{CLIENT_IP}", virtualbox__intnet: true
         
     client.vm.provider :virtualbox do |prov|
 	prov.name = "ICAP-P3-Client"
