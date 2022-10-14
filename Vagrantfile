@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# require a Vagrant recent version
+Vagrant.require_version ">= 2.2.0"
+
 SERVER_IP="192.168.100.10"
 CLIENT_IP="192.168.100.11"
 
@@ -9,11 +12,12 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
   config.vbguest.auto_update = false
 
+  # NFS server
   config.vm.define "server", primary: true do |server|
     server.vm.hostname = "server"
-    server.vm.network :private_network, ip: "#{SERVER_IP}", virtualbox__intnet: true
+    server.vm.network "private_network", ip: "#{SERVER_IP}", virtualbox__intnet: true
 
-    server.vm.provider :virtualbox do |prov|
+    server.vm.provider "virtualbox" do |prov|
 	prov.name = "ICAP-P3-Server"
         prov.cpus = 1
         prov.memory = 1024
@@ -30,11 +34,12 @@ Vagrant.configure("2") do |config|
     end
   end
   
+  # NFS client
   config.vm.define "client" do |client|
     client.vm.hostname = "client"
-    client.vm.network :private_network, ip: "#{CLIENT_IP}", virtualbox__intnet: true
+    client.vm.network "private_network", ip: "#{CLIENT_IP}", virtualbox__intnet: true
         
-    client.vm.provider :virtualbox do |prov|
+    client.vm.provider "virtualbox" do |prov|
 	prov.name = "ICAP-P3-Client"
         prov.cpus = 1
         prov.memory = 1024
@@ -46,5 +51,4 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provisioning/bootstrap.sh" do |script|
       script.args = [SERVER_IP, CLIENT_IP]
   end
-
 end
