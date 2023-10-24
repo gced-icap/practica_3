@@ -4,7 +4,7 @@
 # Modifica la variable STUDENT_PREFIX para sustituir "xxx" por tu prefijo
 # Ejemplo, el alumno Roberto Rey Expósito, que hace la práctica en el curso
 # 23/24, utilizará el siguiente prefijo: rre2324
-STUDENT_PREFIX="rre2324"
+STUDENT_PREFIX="xxx"
 
 # require a Vagrant recent version
 Vagrant.require_version ">= 2.3.0"
