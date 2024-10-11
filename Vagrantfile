@@ -1,13 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+ENV["VAGRANT_NO_PARALLEL"] = "yes"
+
 # Modifica la variable STUDENT_PREFIX para sustituir "xxx" por tu prefijo
 # Ejemplo, el alumno Roberto Rey Expósito, que hace la práctica en el curso
-# 23/24, utilizará el siguiente prefijo: rre2324
+# 24/25, utilizará el siguiente prefijo: rre2425
 STUDENT_PREFIX="xxx"
 
 # require a Vagrant recent version
-Vagrant.require_version ">= 2.3.0"
+Vagrant.require_version ">= 2.4.0"
 
 # Hostnames and IP addresses
 SERVER_HOSTNAME = "#{STUDENT_PREFIX}-server"
@@ -17,7 +19,7 @@ CLIENT_IP="192.168.100.11"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/bookworm64"
-  config.vm.box_version = "12.20230723.1"
+  config.vm.box_version = "12.20240905.1"
   config.vm.box_check_update = false
   config.vbguest.auto_update = false
 
