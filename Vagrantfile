@@ -33,11 +33,11 @@ Vagrant.configure("2") do |config|
     server.vm.network "private_network", ip: "#{SERVER_IP}", virtualbox__intnet: true
 
     server.vm.provider "virtualbox" do |prov|
-	      prov.name = "ICAP-P3-Server"
+	prov.name = "ICAP-P3-Server"
         prov.cpus = 1
         prov.memory = 1024
-	      prov.gui = false
-	      prov.linked_clone = false
+	prov.gui = false
+	prov.linked_clone = false
 
         for i in 0..4 do
             filename = "disks/disk#{i}.vdi"
@@ -64,8 +64,8 @@ Vagrant.configure("2") do |config|
           prov.name = "ICAP-P3-Client#{n}"
           prov.cpus = 1
           prov.memory = 1024
-	        prov.gui = false
-	        prov.linked_clone = false
+	  prov.gui = false
+	  prov.linked_clone = false
         end
       end
     end

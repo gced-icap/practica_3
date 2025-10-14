@@ -38,7 +38,7 @@ sed -i 's/KbdInteractiveAuthentication no/KbdInteractiveAuthentication yes/' /et
 sed -i 's/#KbdInteractiveAuthentication/KbdInteractiveAuthentication/' /etc/ssh/sshd_config
 systemctl restart ssh
 
-# Set $PATH for vagrant
+# .profile
 sed -i "/sbin/d" /home/vagrant/.profile
 echo 'PATH=/sbin:$PATH' >> /home/vagrant/.profile
 
