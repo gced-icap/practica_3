@@ -11,7 +11,16 @@ CLIENT_HOSTNAME=$3
 NUM_CLIENTS=$4
 
 # Install basic software
-apt-get install -y vim nano openssh-server sshpass unzip dnsutils dos2unix whois fdisk xfsprogs lvm2 mdadm nfs-kernel-server nfs-common
+apt-get clean all
+apt-get update
+SOFTWARE="vim nano openssh-server sshpass unzip dnsutils dos2unix whois fdisk xfsprogs lvm2 mdadm nfs-kernel-server nfs-common"
+echo "==> Installing software packages..."
+if ! apt-get install -y -qq $SOFTWARE > /tmp/apt.log 2>&1; then
+    echo "Error when installing software, log:"
+    cat /tmp/apt.log
+    exit 1
+fi
+echo "==> done"
 
 timedatectl set-timezone Europe/Madrid
 passwd -d root
