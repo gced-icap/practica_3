@@ -10,6 +10,8 @@ SERVER_HOSTNAME=$2
 CLIENT_HOSTNAME=$3
 NUM_CLIENTS=$4
 
+export DEBIAN_FRONTEND=noninteractive
+
 # Install basic software
 apt-get clean all
 apt-get update
