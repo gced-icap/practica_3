@@ -6,7 +6,7 @@
 # 26/27, utilizará el siguiente prefijo: rre2627
 STUDENT_PREFIX = "X"
 
-DEPLOY_CLIENTS = true
+DEPLOY_CLIENTS = false
 
 # require a Vagrant recent version
 Vagrant.require_version ">= 2.4.0"
